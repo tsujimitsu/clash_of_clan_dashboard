@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>Clash of Clan Dashboard</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1 class="text-muted">Clash of Clan Dashboard</h1>
+        {% if msgs %}
+        <p>name: {{msgs.name}}</p>
+        <p>members: {{msgs.members}}</p>
+        <p>requiredTrophies: {{msgs.requiredTrophies}}<p>
+        <p>tag: {{msgs.tag}}</p>
+        <p>warFrequency: {{msgs.warFrequency}}</p>
+        <p>warWinStreak: {{msgs.warWinStreak}}</p>
+        <p>warWins: {{msgs.warWins}}</p>
+        <p><img src="{{msgs.badgeUrls.small}}"></p>
+        <p>clan level: {{msgs.clanLevel}}</p>
+        <p>clan Points: {{msgs.clanPoints}}</p>
+        <p>description: {{msgs.description}}</p>
+        <p>isWarLogPublic: {{msgs.isWarLogPublic}}</p>
+        <p>location: {{msgs.location.name}}</p>
+        <p>
+
+        <table>
+          <tr>
+            <th>tag</th>
+            <th>name</th>
+            <th>role</th>
+            <th>clanRank</th>
+            <th>previousClanRank</th>
+            <th>donations</th>
+            <th>donationsReceived</th>
+            <th>expLevel</th>
+            <th>league</th>
+            <th>trophies</th>
+          </tr>
+          {% for member in msgs.memberList %}
+          <tr>
+            <td>{{member.tag}}</td>
+            <td>{{member.name}}</td>
+            <td>{{member.role}}</td>
+            <td>{{member.clanRank}}</td>
+            <td>{{member.previousClanRank}}</td>
+            <td>{{member.donations}}</td>
+            <td>{{member.donationsReceived}}</td>
+            <td>{{member.expLevel}}</td>
+            <td><img src="{{member.league.iconUrls.tiny}}"> {{member.league.name}}</td>
+            <td>{{member.trophies}}</td>
+          </tr>
+          {% endfor%}
+        </table>
+        {% endif %}
+      </div>
+    </div>
+  </body>
+</html>
