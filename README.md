@@ -6,6 +6,7 @@ usage
 ----
 
     $ git clone https://github.com/tsujimitsu/clash_of_clan_dashboard.git
+    $ cd clash_of_clan_dashboard
     $ pip install -r requirements.txt
     $ export AUTH_TOKEN=<YOUR API TOKEN>
     $ python app.py
