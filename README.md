@@ -13,3 +13,14 @@ usage
     $ curl localhost:10080
     $ curl localhost:10080/clans/<clan_tag>
     -> clan_tag must do URL encoding
+
+
+update translation
+----
+
+    $ cd ./clash_of_clan_dashboard
+    $ pybabel extract -F babel.cfg -k lazy_gettext -o messages.pot .
+    $ pybabel update -i messages.pot -d translations
+    $ vi translations/ja/LC_MESSAGES/messages.po
+    -> write translate words
+    $ pybabel compile -d translations
