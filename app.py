@@ -3,8 +3,9 @@
 import flask
 import requests
 import urllib
+import os
 
-AUTH_TOKEN = "<YOUR TOKEN>"
+AUTH_TOKEN = os.environ['AUTH_TOKEN']
 BASE_ENDPOINT = "https://api.clashofclans.com/v1"
 
 app = flask.Flask(__name__)
@@ -21,6 +22,7 @@ def get_clan(clan_tag):
         "Authorization": "Bearer " + AUTH_TOKEN
     }
     messages = requests.get(BASE_ENDPOINT + "/clans/" + clan_tag_encode, headers=header)
+    print messages.json()
     return flask.render_template('get_clan.html', msgs=messages.json())
 
 if __name__ == '__main__':
